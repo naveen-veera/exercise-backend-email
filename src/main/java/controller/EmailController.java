@@ -53,6 +53,14 @@ public class EmailController {
 		return emailRepo.save(mail);
 	}
 	
+	//update
+	@PutMapping("/email/{id}")
+	public EmailModel UpdateMail(@PathVariable(value = "id") int id, @RequestBody EmailModel mail) {
+		EmailModel oldMail = emailRepo.findById(id);
+		oldMail.setTitle(mail.getTitle());
+		return emailRepo.save(Oldmail);
+	}
+	
 	//Delete email
 	@DeleteMapping("/deletemail/{id}")
 	public String removeBooking(@PathVariable(value = "id") int id) throws  ResourceNotFoundException{
